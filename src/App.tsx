@@ -505,14 +505,14 @@ export default function App() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2 }}
-            className="relative"
+            className="relative flex items-center justify-center"
           >
-            <div className="aspect-square rounded-[48px] overflow-hidden shadow-xl transition-all duration-700">
+            <div className="w-full aspect-square transition-all duration-700">
               <CrochetIllustration />
             </div>
-            {/* Very subtle decorative glows */}
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-accent-sage/10 rounded-full blur-3xl -z-10" />
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-accent-rose/10 rounded-full blur-3xl -z-10" />
+            {/* Decorative glows */}
+            <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-accent-sage/20 rounded-full blur-[100px] -z-10" />
+            <div className="absolute -top-20 -right-20 w-64 h-64 bg-accent-rose/20 rounded-full blur-[100px] -z-10" />
           </motion.div>
         </div>
       </section>

@@ -2,93 +2,67 @@ import React from 'react';
 
 export const CrochetIllustration = () => {
   return (
-    <div className="w-full h-full bg-white/40 rounded-[48px] flex items-center justify-center p-16 relative overflow-hidden shadow-xl border border-accent-rose/10 group">
-      {/* Very subtle background depth */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent-rose/10 rounded-full blur-[100px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent-sage/10 rounded-full blur-[100px]" />
+    <div className="w-full h-full flex items-center justify-center relative overflow-visible group">
+      {/* Subtle background depth - integrated with page */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent-rose/15 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent-sage/15 rounded-full blur-[120px]" />
       </div>
       
       <svg 
         viewBox="0 0 400 400" 
-        className="w-full h-full max-w-[300px]" 
+        className="w-full h-full max-w-[400px] overflow-visible" 
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <linearGradient id="hookGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#8B4513" />
-            <stop offset="100%" stopColor="#A0522D" />
-          </linearGradient>
           <linearGradient id="yarnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#d4a373" />
             <stop offset="100%" stopColor="#b08968" />
           </linearGradient>
+          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
         </defs>
 
         {/* The Yarn Ball - Starting Point */}
-        <g transform="translate(60, 280)">
+        <g transform="translate(80, 300)" className="animate-pulse-slow">
           {/* Stylized Yarn Ball */}
-          <circle cx="0" cy="0" r="25" fill="#faedcd" stroke="#d4a373" strokeWidth="1" className="opacity-40" />
-          {/* Yarn Texture Lines */}
-          <path d="M-15,-15 Q0,-25 15,-15" stroke="#d4a373" strokeWidth="0.5" className="opacity-30" />
-          <path d="M-20,0 Q0,-10 20,0" stroke="#d4a373" strokeWidth="0.5" className="opacity-30" />
-          <path d="M-15,15 Q0,5 15,15" stroke="#d4a373" strokeWidth="0.5" className="opacity-30" />
-          <path d="M-5,-20 Q5,0 -5,20" stroke="#d4a373" strokeWidth="0.5" className="opacity-30" />
+          <circle cx="0" cy="0" r="35" fill="#faedcd" stroke="#d4a373" strokeWidth="1.5" className="opacity-60" />
+          {/* Yarn Texture Lines - Spiraling out */}
+          <path d="M-20,-20 C-10,-30 10,-30 20,-20" stroke="#d4a373" strokeWidth="1" className="opacity-40" />
+          <path d="M-25,0 C-15,-10 15,-10 25,0" stroke="#d4a373" strokeWidth="1" className="opacity-40" />
+          <path d="M-20,20 C-10,10 10,10 20,20" stroke="#d4a373" strokeWidth="1" className="opacity-40" />
+          <path d="M-5,-25 C5,-15 5,15 -5,25" stroke="#d4a373" strokeWidth="1" className="opacity-40" />
+          <path d="M15,-15 C5,-5 5,5 15,15" stroke="#d4a373" strokeWidth="1" className="opacity-40" />
+          {/* The thread "exit" point highlight */}
+          <circle cx="0" cy="0" r="2" fill="#d4a373" className="opacity-30" />
         </g>
 
-        {/* The Continuous Thread forming V and P */}
+        {/* The Continuous Thread forming V and P - More fluid cursive and connected to yarn ball */}
         <path 
-          d="M85,280 
-             C100,280 110,280 120,260 
-             C140,220 160,180 180,180 
-             C150,340 100,340 80,180 
-             M180,180 
-             L220,180 
-             C300,180 300,280 220,280" 
+          d="M80,300 
+             Q100,300 110,270 
+             C130,210 150,120 170,120 
+             C140,360 80,360 60,120 
+             C50,40 110,40 150,120 
+             M170,120 
+             L210,120 
+             C310,120 310,240 210,240 
+             L210,380" 
           stroke="#d4a373" 
-          strokeWidth="4" 
+          strokeWidth="6" 
           strokeLinecap="round" 
           strokeLinejoin="round"
-          className="transition-all duration-700 group-hover:stroke-text-mocha"
+          filter="url(#glow)"
+          className="transition-all duration-1000 group-hover:stroke-accent-rose group-hover:stroke-[7px]"
         />
 
-        {/* The Crochet Hook - Forming the vertical stem of P */}
-        <g transform="translate(220, 30)">
-          {/* Hook Head - Integrated at the top of the P stem */}
-          <path 
-            d="M-4,110 
-               Q-4,90 10,90 
-               Q24,90 24,110 
-               L24,120 
-               Q24,130 10,130 
-               L-4,120" 
-            fill="url(#hookGrad)" 
-            className="opacity-90"
-          />
-          
-          {/* Hook Stem - The vertical line of the P */}
-          <rect 
-            x="-4" y="110" 
-            width="8" height="240" 
-            rx="4" 
-            fill="url(#hookGrad)" 
-            className="opacity-90"
-          />
-          
-          {/* Subtle highlight on the hook */}
-          <rect 
-            x="-1" y="140" 
-            width="2" height="180" 
-            rx="1" 
-            fill="white" 
-            className="opacity-15"
-          />
-        </g>
-
         {/* Minimalist accent dots */}
-        <circle cx="340" cy="120" r="1.2" fill="#d4a373" className="opacity-20" />
-        <circle cx="355" cy="145" r="0.8" fill="#d4a373" className="opacity-15" />
+        <circle cx="340" cy="80" r="2" fill="#d4a373" className="opacity-30 animate-bounce-slow" />
+        <circle cx="370" cy="110" r="1.5" fill="#d4a373" className="opacity-20 animate-bounce-slow" style={{ animationDelay: '0.5s' }} />
+        <circle cx="350" cy="140" r="1" fill="#d4a373" className="opacity-15 animate-bounce-slow" style={{ animationDelay: '1s' }} />
       </svg>
     </div>
   );

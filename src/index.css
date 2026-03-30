@@ -11,6 +11,17 @@
   --color-accent-sage: #ccd5ae;
   --color-accent-beige: #e9edc9;
   --color-text-mocha: #3D2B1F;
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+  }
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  --animate-pulse-slow: pulse-slow 4s ease-in-out infinite;
+  --animate-bounce-slow: bounce-slow 3s ease-in-out infinite;
 }
 
 @layer base {
