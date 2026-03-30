@@ -20,7 +20,6 @@ import {
   Plus,
   Minus
 } from "lucide-react";
-import { CrochetIllustration } from "./components/CrochetIllustration";
 import { useState, useEffect, useMemo } from "react";
 
 interface CartItem {
@@ -476,59 +475,51 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="inicio" className="relative min-h-screen flex items-center linen-texture pt-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <section id="inicio" className="relative h-[75vh] flex items-center justify-center linen-texture pt-12 overflow-hidden">
+        <div className="max-w-5xl mx-auto px-6 flex flex-col items-center text-center">
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
+            className="max-w-2xl"
           >
-            <h1 className="text-6xl md:text-8xl font-light mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-light mb-2 leading-tight">
               Valentina <br />
               <span className="text-accent-rose">Petry</span>
             </h1>
-            <p className="text-xl md:text-2xl text-text-mocha/80 mb-10 max-w-md font-light">
+            <p className="text-sm md:text-base text-text-mocha/80 mb-4 font-light">
               Peças em crochê feitas à mão com amor e delicadeza.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a 
                 href="#colecao" 
-                className="bg-accent-rose text-white px-8 py-4 rounded-full text-center font-medium hover:bg-accent-rose/90 transition-all shadow-lg shadow-accent-rose/20 flex items-center justify-center gap-2 group"
+                className="bg-accent-rose text-white px-6 py-2.5 rounded-full text-center font-medium hover:bg-accent-rose/90 transition-all shadow-lg shadow-accent-rose/20 flex items-center justify-center gap-2 group text-sm"
               >
                 Ver Coleção
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
           </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2 }}
-            className="relative flex items-center justify-center"
-          >
-            <div className="w-full aspect-square transition-all duration-700">
-              <CrochetIllustration />
-            </div>
-            {/* Decorative glows */}
-            <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-accent-sage/20 rounded-full blur-[100px] -z-10" />
-            <div className="absolute -top-20 -right-20 w-64 h-64 bg-accent-rose/20 rounded-full blur-[100px] -z-10" />
-          </motion.div>
+          {/* Decorative glows - repositioned for centered layout */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-rose/5 rounded-full blur-[120px] -z-10" />
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent-sage/10 rounded-full blur-[100px] -z-10" />
+          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent-rose/10 rounded-full blur-[100px] -z-10" />
         </div>
       </section>
 
 
       {/* Portfolio / Shop Gallery */}
-      <section id="colecao" className="py-16 linen-texture">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.div {...fadeIn} className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl mb-4">Minha Coleção</h2>
-            <p className="text-text-mocha/60 max-w-2xl mx-auto">
+      <section id="colecao" className="py-8 linen-texture">
+        <div className="max-w-5xl mx-auto px-6">
+          <motion.div {...fadeIn} className="text-center mb-4">
+            <h2 className="text-xl md:text-2xl mb-2">Minha Coleção</h2>
+            <p className="text-text-mocha/60 max-w-xl mx-auto text-xs">
               Explore nossas peças exclusivas, feitas com os melhores fios e acabamento impecável.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {products.map((product, index) => (
               <motion.div 
                 key={product.id}
@@ -773,14 +764,14 @@ export default function App() {
       </section>
 
       {/* Custom Orders Highlight Section */}
-      <section className="py-24 bg-accent-sage/20">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-8 bg-accent-sage/20">
+        <div className="max-w-5xl mx-auto px-6">
           <motion.div 
             {...fadeIn}
-            className="grid md:grid-cols-2 gap-16 items-center bg-accent-beige rounded-[48px] p-8 md:p-16 shadow-xl shadow-accent-rose/5 border border-accent-rose/10"
+            className="grid md:grid-cols-2 gap-8 items-center bg-accent-beige rounded-[32px] p-4 md:p-6 shadow-xl shadow-accent-rose/5 border border-accent-rose/10"
           >
             <div className="relative">
-              <div className="aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl">
+              <div className="aspect-[4/5] rounded-[20px] overflow-hidden shadow-2xl max-w-[300px] mx-auto">
                 <img 
                   src="/Capa.jpeg" 
                   alt="Custom crochet work" 
@@ -788,42 +779,42 @@ export default function App() {
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-accent-sage text-white p-6 rounded-2xl shadow-xl flex items-center gap-3">
-                <Heart className="w-6 h-6 fill-current" />
-                <span className="font-serif italic text-lg">Feito 100% à mão</span>
+              <div className="absolute -bottom-3 -right-3 bg-accent-sage text-white p-2 rounded-lg shadow-xl flex items-center gap-1.5">
+                <Heart className="w-3.5 h-3.5 fill-current" />
+                <span className="font-serif italic text-[11px]">Feito 100% à mão</span>
               </div>
             </div>
             
             <div>
-              <span className="text-accent-rose font-bold uppercase tracking-widest text-sm mb-4 block">Exclusividade</span>
-              <h2 className="text-4xl md:text-5xl mb-6 font-serif italic">Encomendas Personalizadas</h2>
-              <p className="text-text-mocha/70 text-lg mb-8 leading-relaxed">
+              <span className="text-accent-rose font-bold uppercase tracking-widest text-[9px] mb-1.5 block">Exclusividade</span>
+              <h2 className="text-xl md:text-2xl mb-2 font-serif italic">Encomendas Personalizadas</h2>
+              <p className="text-text-mocha/70 text-[13px] mb-3 leading-relaxed">
                 Tem uma ideia especial? Faço peças sob medida com as cores e fios de sua preferência. 
                 Seja um modelo que você viu e amou ou uma criação totalmente nova, estou aqui para transformar seu desejo em arte tecida.
               </p>
-              <div className="space-y-4 mb-10">
-                <div className="flex items-center gap-3 text-text-mocha/80">
-                  <CheckCircle className="w-5 h-5 text-accent-sage" />
-                  <span>Cores e fios personalizados</span>
+              <div className="space-y-1.5 mb-4">
+                <div className="flex items-center gap-2 text-text-mocha/80">
+                  <CheckCircle className="w-3 h-3 text-accent-sage" />
+                  <span className="text-[11px]">Cores e fios personalizados</span>
                 </div>
-                <div className="flex items-center gap-3 text-text-mocha/80">
-                  <CheckCircle className="w-5 h-5 text-accent-sage" />
-                  <span>Medidas exatas para você</span>
+                <div className="flex items-center gap-2 text-text-mocha/80">
+                  <CheckCircle className="w-3 h-3 text-accent-sage" />
+                  <span className="text-[11px]">Medidas exatas para você</span>
                 </div>
-                <div className="flex items-center gap-3 text-text-mocha/80">
-                  <CheckCircle className="w-5 h-5 text-accent-sage" />
-                  <span>Prazo de produção: 15 a 20 dias úteis</span>
+                <div className="flex items-center gap-2 text-text-mocha/80">
+                  <CheckCircle className="w-3 h-3 text-accent-sage" />
+                  <span className="text-[11px]">Prazo de produção: 15 a 20 dias úteis</span>
                 </div>
               </div>
               <a 
                 href="https://wa.me/5551996113728?text=Olá! Gostaria de conversar sobre uma encomenda personalizada." 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-accent-rose text-white px-10 py-5 rounded-full font-bold hover:bg-accent-rose/90 transition-all shadow-lg shadow-accent-rose/20 group"
+                className="inline-flex items-center gap-2 bg-accent-rose text-white px-6 py-2.5 rounded-full font-bold hover:bg-accent-rose/90 transition-all shadow-lg shadow-accent-rose/20 group text-[13px]"
               >
-                <MessageCircle className="w-6 h-6" />
+                <MessageCircle className="w-3.5 h-3.5" />
                 Solicitar Orçamento
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
           </motion.div>
@@ -831,46 +822,46 @@ export default function App() {
       </section>
 
       {/* Slow Fashion Section - High Evidence */}
-      <section className="py-32 bg-text-mocha relative overflow-hidden">
+      <section className="py-10 bg-text-mocha relative overflow-hidden">
         {/* Decorative background elements */}
         <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
           <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-accent-rose blur-[120px]" />
           <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-accent-sage blur-[120px]" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-5xl mx-auto px-6 relative z-10">
           <motion.div 
             {...fadeIn}
-            className="text-center max-w-4xl mx-auto"
+            className="text-center max-w-3xl mx-auto"
           >
-            <span className="text-accent-rose font-bold uppercase tracking-[0.3em] text-xs mb-8 block">Manifesto</span>
-            <h2 className="text-5xl md:text-8xl mb-12 font-serif italic text-bg-warm leading-tight">Slow Fashion</h2>
-            <p className="text-white/80 text-xl md:text-3xl mb-20 leading-relaxed font-light italic">
+            <span className="text-accent-rose font-bold uppercase tracking-[0.3em] text-[9px] mb-2 block">Manifesto</span>
+            <h2 className="text-2xl md:text-4xl mb-3 font-serif italic text-bg-warm leading-tight">Slow Fashion</h2>
+            <p className="text-white/80 text-sm md:text-lg mb-6 leading-relaxed font-light italic">
               "Valorizamos o tempo, a qualidade e a ética. Cada peça é produzida individualmente, 
               respeitando o ritmo do fazer manual e garantindo uma moda mais sustentável, consciente e duradoura."
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-              <div className="space-y-4">
-                <div className="w-20 h-20 mx-auto rounded-full bg-white/5 flex items-center justify-center border border-white/10 text-accent-rose">
-                  <Heart className="w-10 h-10 fill-current" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="space-y-1.5">
+                <div className="w-12 h-12 mx-auto rounded-full bg-white/5 flex items-center justify-center border border-white/10 text-accent-rose">
+                  <Heart className="w-6 h-6 fill-current" />
                 </div>
-                <h3 className="text-bg-warm font-serif italic text-2xl">Artesanato com Alma</h3>
-                <p className="text-white/40 text-sm">Cada ponto carrega uma história e dedicação única.</p>
+                <h3 className="text-bg-warm font-serif italic text-base">Artesanato com Alma</h3>
+                <p className="text-white/40 text-[9px]">Cada ponto carrega uma história e dedicação única.</p>
               </div>
-              <div className="space-y-4">
-                <div className="w-20 h-20 mx-auto rounded-full bg-white/5 flex items-center justify-center border border-white/10 text-accent-sage">
-                  <CheckCircle className="w-10 h-10" />
+              <div className="space-y-1.5">
+                <div className="w-12 h-12 mx-auto rounded-full bg-white/5 flex items-center justify-center border border-white/10 text-accent-sage">
+                  <CheckCircle className="w-6 h-6" />
                 </div>
-                <h3 className="text-bg-warm font-serif italic text-2xl">Produção Ética</h3>
-                <p className="text-white/40 text-sm">Respeito ao meio ambiente e ao tempo do artesão.</p>
+                <h3 className="text-bg-warm font-serif italic text-base">Produção Ética</h3>
+                <p className="text-white/40 text-[9px]">Respeito ao meio ambiente e ao tempo do artesão.</p>
               </div>
-              <div className="space-y-4">
-                <div className="w-20 h-20 mx-auto rounded-full bg-white/5 flex items-center justify-center border border-white/10 text-accent-rose">
-                  <Palette className="w-10 h-10" />
+              <div className="space-y-1.5">
+                <div className="w-12 h-12 mx-auto rounded-full bg-white/5 flex items-center justify-center border border-white/10 text-accent-rose">
+                  <Palette className="w-6 h-6" />
                 </div>
-                <h3 className="text-bg-warm font-serif italic text-2xl">Peças Únicas</h3>
-                <p className="text-white/40 text-sm">Exclusividade que foge da produção em massa.</p>
+                <h3 className="text-bg-warm font-serif italic text-base">Peças Únicas</h3>
+                <p className="text-white/40 text-[9px]">Exclusividade que foge da produção em massa.</p>
               </div>
             </div>
           </motion.div>
@@ -878,39 +869,39 @@ export default function App() {
       </section>
 
       {/* How to Order Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-8 bg-white">
+        <div className="max-w-5xl mx-auto px-6">
           <motion.div 
             {...fadeIn}
-            className="bg-bg-warm rounded-[40px] p-12 md:p-20 text-center"
+            className="bg-bg-warm rounded-[24px] p-5 md:p-8 text-center"
           >
-            <h2 className="text-4xl md:text-5xl mb-16">Como Encomendar</h2>
-            <div className="grid md:grid-cols-3 gap-12 relative">
+            <h2 className="text-xl md:text-2xl mb-4">Como Encomendar</h2>
+            <div className="grid md:grid-cols-3 gap-6 relative">
               {/* Step 1 */}
               <div className="flex flex-col items-center">
-                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-md mb-6 text-accent-rose">
-                  <ShoppingBag className="w-8 h-8" />
+                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-md mb-2 text-accent-rose">
+                  <ShoppingBag className="w-5 h-5" />
                 </div>
-                <h4 className="text-xl font-bold mb-2">1. Escolha sua peça</h4>
-                <p className="text-text-mocha/60">Navegue pela coleção e escolha o modelo que mais combina com você.</p>
+                <h4 className="text-sm font-bold mb-1">1. Escolha sua peça</h4>
+                <p className="text-text-mocha/60 text-[10px]">Navegue pela coleção e escolha o modelo que mais combina com você.</p>
               </div>
 
               {/* Step 2 */}
               <div className="flex flex-col items-center">
-                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-md mb-6 text-accent-rose">
-                  <MessageCircle className="w-8 h-8" />
+                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-md mb-2 text-accent-rose">
+                  <MessageCircle className="w-5 h-5" />
                 </div>
-                <h4 className="text-xl font-bold mb-2">2. Entre em contato</h4>
-                <p className="text-text-mocha/60">Mande uma mensagem pelo WhatsApp ou Instagram para confirmar cores e prazos.</p>
+                <h4 className="text-sm font-bold mb-1">2. Entre em contato</h4>
+                <p className="text-text-mocha/60 text-[10px]">Mande uma mensagem pelo WhatsApp ou Instagram para confirmar cores e prazos.</p>
               </div>
 
               {/* Step 3 */}
               <div className="flex flex-col items-center">
-                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-md mb-6 text-accent-rose">
-                  <CheckCircle className="w-8 h-8" />
+                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-md mb-2 text-accent-rose">
+                  <CheckCircle className="w-5 h-5" />
                 </div>
-                <h4 className="text-xl font-bold mb-2">3. Receba com amor</h4>
-                <p className="text-text-mocha/60">Sua peça será produzida e enviada com todo o cuidado até sua casa.</p>
+                <h4 className="text-sm font-bold mb-1">3. Receba com amor</h4>
+                <p className="text-text-mocha/60 text-[10px]">Sua peça será produzida e enviada com todo o cuidado até sua casa.</p>
               </div>
             </div>
           </motion.div>
@@ -918,34 +909,34 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contato" className="py-32 bg-bg-warm">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center max-w-4xl mx-auto">
+      <section id="contato" className="py-10 bg-bg-warm">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto">
             <motion.div {...fadeIn}>
-              <span className="text-accent-rose font-bold uppercase tracking-widest text-sm mb-6 block">Contato</span>
-              <h2 className="text-5xl md:text-8xl mb-10 font-serif italic">Vamos conversar?</h2>
-              <p className="text-text-mocha/70 text-xl md:text-2xl mb-16 leading-relaxed">
+              <span className="text-accent-rose font-bold uppercase tracking-widest text-[9px] mb-2 block">Contato</span>
+              <h2 className="text-2xl md:text-4xl mb-3 font-serif italic">Vamos conversar?</h2>
+              <p className="text-text-mocha/70 text-sm md:text-base mb-6 leading-relaxed">
                 Tire suas dúvidas, peça orçamentos personalizados ou apenas diga um oi. Adoraria ouvir você e transformar suas ideias em realidade!
               </p>
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-10">
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-5">
                 <a 
                   href="https://wa.me/5551996113728" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="bg-[#25D366] hover:bg-[#128C7E] text-white px-12 py-6 rounded-full font-bold flex items-center justify-center gap-4 transition-all shadow-2xl shadow-[#25D366]/20 text-xl group"
+                  className="bg-[#25D366] hover:bg-[#128C7E] text-white px-7 py-2.5 rounded-full font-bold flex items-center justify-center gap-2 transition-all shadow-2xl shadow-[#25D366]/20 text-sm group"
                 >
-                  <MessageCircle className="w-8 h-8" />
+                  <MessageCircle className="w-4 h-4" />
                   Fale pelo WhatsApp
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a 
                   href="https://www.instagram.com/tinahpetry/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center gap-5 text-text-mocha/80 hover:text-accent-rose transition-all text-xl font-bold group"
+                  className="flex items-center gap-2 text-text-mocha/80 hover:text-accent-rose transition-all text-sm font-bold group"
                 >
-                  <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-lg border border-accent-rose/10 group-hover:scale-110 transition-transform">
-                    <Instagram className="w-8 h-8 text-accent-rose" />
+                  <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center shadow-lg border border-accent-rose/10 group-hover:scale-110 transition-transform">
+                    <Instagram className="w-4.5 h-4.5 text-accent-rose" />
                   </div>
                   @tinahpetry
                 </a>
