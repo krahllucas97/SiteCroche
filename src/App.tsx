@@ -46,7 +46,7 @@ const products = [
     description: "Peça exclusiva tecida com linha 100% viscose. Possui caimento fluido, toque macio e acabamento em franjas que trazem movimento e elegância.",
     price: "R$ 120,00",
     priceValue: 120,
-    image: "Top.jpeg"
+    image: "/Top.jpeg"
   },
   {
     id: 3,
@@ -54,7 +54,7 @@ const products = [
     description: "Top rede em crochê, moderno e versátil. Perfeito para sobreposições e looks de verão.",
     price: "R$ 80,00",
     priceValue: 80,
-    image: "Rosa.jpeg"
+    image: "/Rosa.jpeg"
   },
   {
     id: 4,
@@ -62,7 +62,7 @@ const products = [
     description: "Top transversal em crochê, com design moderno e ajuste perfeito ao corpo. Ideal para compor looks casuais e elegantes.",
     price: "R$ 55,00",
     priceValue: 55,
-    image: "TopBranco.png"
+    image: "/TopBranco.png"
   },
   {
     id: 2,
@@ -71,7 +71,7 @@ const products = [
     price: "R$ 7,00 cada ou 3 por R$ 15,00",
     priceValue: 7,
     promoPriceValue: 15,
-    image: "PortaCopos.jpeg"
+    image: "/PortaCopos.jpeg"
   },
   {
     id: 5,
@@ -80,7 +80,7 @@ const products = [
     price: "R$ 7,00 cada ou 3 por R$ 15,00",
     priceValue: 7,
     promoPriceValue: 15,
-    image: "PortaCoposLiso.png"
+    image: "/PortaCoposLiso.png"
   }
 ];
 
@@ -782,7 +782,7 @@ export default function App() {
             <div className="relative">
               <div className="aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl">
                 <img 
-                  src="Capa.jpeg" 
+                  src="/Capa.jpeg" 
                   alt="Custom crochet work" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
@@ -1012,7 +1012,7 @@ export default function App() {
                 cart.map((item) => (
                   <div key={item.cartId} className="flex gap-4 bg-bg-warm p-4 rounded-2xl shadow-sm border border-accent-rose/5">
                     <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
-                      <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                      <img src={item.image} alt={item.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex justify-between items-start mb-1">
