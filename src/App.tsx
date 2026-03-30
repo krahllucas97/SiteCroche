@@ -43,34 +43,49 @@ const products = [
     id: 1,
     name: "Top de Crochê Viscose",
     description: "Peça exclusiva tecida com linha 100% viscose. Possui caimento fluido, toque macio e acabamento em franjas que trazem movimento e elegância.",
-    price: "R$ 120,00",
-    priceValue: 120,
+    price: "R$ 150,00",
+    priceValue: 150,
     image: "/Top.jpeg"
+  },
+  {
+    id: 8,
+    name: "Top de Crochê com Franja",
+    description: "Peça exclusiva tecida com linha 100% viscose. Possui caimento fluido, toque macio e acabamento em franjas que trazem movimento e elegância.",
+    price: "R$ 100,00",
+    priceValue: 100,
+    image: "/TopFranja.png"
   },
   {
     id: 3,
     name: "Top Rede",
     description: "Top rede em crochê, moderno e versátil. Perfeito para sobreposições e looks de verão.",
-    price: "R$ 80,00",
-    priceValue: 80,
+    price: "R$ 100,00",
+    priceValue: 100,
     image: "/Rosa.jpeg"
+  },
+  {
+    id: 6,
+    name: "Top Brasil",
+    description: "Top temático nas cores do Brasil. Confortável, estiloso e perfeito para torcer ou usar no dia a dia.",
+    price: "R$ 90,00",
+    priceValue: 90,
+    image: "/TopBrasil.png"
   },
   {
     id: 4,
     name: "Top Transversal",
     description: "Top transversal em crochê, com design moderno e ajuste perfeito ao corpo. Ideal para compor looks casuais e elegantes.",
-    price: "R$ 55,00",
-    priceValue: 55,
+    price: "R$ 80,00",
+    priceValue: 80,
     image: "/TopBranco.png"
   },
   {
-    id: 2,
-    name: "Porta Copos",
-    description: "Delicadeza em cada detalhe. Porta copos artesanais em crochê com design floral. Promoção: 3 unidades por apenas R$ 15,00!",
-    price: "R$ 7,00 cada ou 3 por R$ 15,00",
-    priceValue: 7,
-    promoPriceValue: 15,
-    image: "/PortaCopos.jpeg"
+    id: 7,
+    name: "Headpiece",
+    description: "Headpiece artesanal em crochê, macia e estilosa. Perfeita para os dias mais frios com um toque de elegância.",
+    price: "R$ 50,00",
+    priceValue: 50,
+    image: "/Touca.png"
   },
   {
     id: 5,
@@ -80,6 +95,15 @@ const products = [
     priceValue: 7,
     promoPriceValue: 15,
     image: "/PortaCoposLiso.png"
+  },
+  {
+    id: 2,
+    name: "Porta Copos",
+    description: "Delicadeza em cada detalhe. Porta copos artesanais em crochê with design floral. Promoção: 3 unidades por apenas R$ 15,00!",
+    price: "R$ 7,00 cada ou 3 por R$ 15,00",
+    priceValue: 7,
+    promoPriceValue: 15,
+    image: "/PortaCopos.jpeg"
   }
 ];
 
@@ -182,6 +206,8 @@ const charmeColors = [
   "9392# - FOLHA",
   "8736 - ÍNDIGO"
 ];
+
+const brasilColors = ["Branco", "Amarelo", "Verde", "Azul"];
 
 const amigurumiColors = [
   "8001 - BRANCO",
@@ -307,6 +333,12 @@ export default function App() {
   const [selectedTopRedeColor, setSelectedTopRedeColor] = useState("");
   const [selectedTopTransversalSize, setSelectedTopTransversalSize] = useState("");
   const [selectedTopTransversalColor, setSelectedTopTransversalColor] = useState("");
+  const [selectedTopBrasilSize, setSelectedTopBrasilSize] = useState("");
+  const [selectedTopBrasilColor, setSelectedTopBrasilColor] = useState("");
+  const [selectedTopFranjaSize, setSelectedTopFranjaSize] = useState("");
+  const [selectedTopFranjaColor, setSelectedTopFranjaColor] = useState("");
+  const [selectedHeadpiecePrimaryColor, setSelectedHeadpiecePrimaryColor] = useState("");
+  const [selectedHeadpieceQuantity, setSelectedHeadpieceQuantity] = useState(0);
   const [selectedPortaCoposType, setSelectedPortaCoposType] = useState("Unidade");
   const [selectedPortaCoposQuantity, setSelectedPortaCoposQuantity] = useState(0);
   const [selectedPortaCoposPrimaryColor, setSelectedPortaCoposPrimaryColor] = useState("");
@@ -541,9 +573,9 @@ export default function App() {
                 <div className="p-4">
                   <h3 className="text-lg mb-6 font-bold">{product.name}</h3>
                   
-                  {(product.id === 1 || product.id === 3 || product.id === 4) && (
+                  {(product.id === 1 || product.id === 3 || product.id === 4 || product.id === 6 || product.id === 8) && (
                     <div className="mb-6 space-y-4">
-                      {product.id === 1 && (
+                      {(product.id === 1 || product.id === 8) && (
                         <a 
                           href="https://www.circulo.com.br/produtos/croche/encanto" 
                           target="_blank" 
@@ -567,15 +599,15 @@ export default function App() {
                         </a>
                       )}
 
-                      {product.id === 1 && (
+                      {(product.id === 1 || product.id === 8) && (
                         <div>
-                          <label htmlFor="color-select-encanto" className="block text-xs font-bold text-text-mocha/60 uppercase mb-2">
+                          <label htmlFor={`color-select-encanto-${product.id}`} className="block text-xs font-bold text-text-mocha/60 uppercase mb-2">
                             Selecione a Cor:
                           </label>
                           <select 
-                            id="color-select-encanto"
-                            value={selectedTopColor}
-                            onChange={(e) => setSelectedTopColor(e.target.value)}
+                            id={`color-select-encanto-${product.id}`}
+                            value={product.id === 1 ? selectedTopColor : selectedTopFranjaColor}
+                            onChange={(e) => product.id === 1 ? setSelectedTopColor(e.target.value) : setSelectedTopFranjaColor(e.target.value)}
                             className="w-full bg-bg-warm border border-accent-rose/20 rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-accent-rose/50 appearance-none cursor-pointer"
                           >
                             <option value="">Escolha uma cor...</option>
@@ -605,6 +637,25 @@ export default function App() {
                         </div>
                       )}
 
+                      {product.id === 6 && (
+                        <div>
+                          <label htmlFor="color-select-brasil" className="block text-xs font-bold text-text-mocha/60 uppercase mb-2">
+                            Selecione a Cor:
+                          </label>
+                          <select 
+                            id="color-select-brasil"
+                            value={selectedTopBrasilColor}
+                            onChange={(e) => setSelectedTopBrasilColor(e.target.value)}
+                            className="w-full bg-bg-warm border border-accent-rose/20 rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-accent-rose/50 appearance-none cursor-pointer"
+                          >
+                            <option value="">Escolha uma cor...</option>
+                            {brasilColors.map(color => (
+                              <option key={color} value={color}>{color}</option>
+                            ))}
+                          </select>
+                        </div>
+                      )}
+
                       <div>
                         <label className="block text-xs font-bold text-text-mocha/60 uppercase mb-2">
                           Selecione o Tamanho:
@@ -617,9 +668,11 @@ export default function App() {
                                 if (product.id === 1) setSelectedTopSize(size);
                                 else if (product.id === 3) setSelectedTopRedeSize(size);
                                 else if (product.id === 4) setSelectedTopTransversalSize(size);
+                                else if (product.id === 6) setSelectedTopBrasilSize(size);
+                                else if (product.id === 8) setSelectedTopFranjaSize(size);
                               }}
                               className={`flex-1 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                                (product.id === 1 ? selectedTopSize : (product.id === 3 ? selectedTopRedeSize : selectedTopTransversalSize)) === size 
+                                (product.id === 1 ? selectedTopSize : (product.id === 3 ? selectedTopRedeSize : (product.id === 4 ? selectedTopTransversalSize : (product.id === 6 ? selectedTopBrasilSize : selectedTopFranjaSize)))) === size 
                                   ? "bg-accent-rose text-white shadow-md" 
                                   : "bg-bg-warm text-text-mocha/60 border border-accent-rose/10 hover:border-accent-rose/30"
                               }`}
@@ -628,6 +681,54 @@ export default function App() {
                             </button>
                           ))}
                         </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {product.id === 7 && (
+                    <div className="mb-6 space-y-4">
+                      <a 
+                        href="https://www.circulo.com.br/produtos/amigurumi/amigurumi?gad_source=1&gad_campaignid=20993915473&gbraid=0AAAAADz8I-ZV-IHF-9USUVGJVworDtOSf&gclid=Cj0KCQjwm6POBhCrARIsAIG58CLYtKxc92ngq9wV8mrpVBBvpHKLkPZtscfi0A-uj06gjXO9OMDdgRQaAk9fEALw_wcB" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-accent-rose text-sm font-bold hover:opacity-80 transition-opacity"
+                      >
+                        <Palette className="w-4 h-4" />
+                        Ver Cores Disponíveis (Linha Amigurumi)
+                      </a>
+
+                      <div>
+                        <label htmlFor="headpiece-color-select" className="block text-xs font-bold text-text-mocha/60 uppercase mb-2">
+                          Selecione a Cor:
+                        </label>
+                        <select 
+                          id="headpiece-color-select"
+                          value={selectedHeadpiecePrimaryColor}
+                          onChange={(e) => setSelectedHeadpiecePrimaryColor(e.target.value)}
+                          className="w-full bg-bg-warm border border-accent-rose/20 rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-accent-rose/50 appearance-none cursor-pointer"
+                        >
+                          <option value="">Escolha a cor...</option>
+                          {amigurumiColors.map(color => (
+                            <option key={color} value={color}>{color}</option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <div>
+                        <label htmlFor="headpiece-quantity-select" className="block text-xs font-bold text-text-mocha/60 uppercase mb-2">
+                          Quantidade:
+                        </label>
+                        <select 
+                          id="headpiece-quantity-select"
+                          value={selectedHeadpieceQuantity}
+                          onChange={(e) => setSelectedHeadpieceQuantity(Number(e.target.value))}
+                          className="w-full bg-bg-warm border border-accent-rose/20 rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-accent-rose/50 appearance-none cursor-pointer"
+                        >
+                          <option value="0">Escolha a quantidade...</option>
+                          {[1, 2, 3, 4, 5].map(num => (
+                            <option key={num} value={num}>{num} {num === 1 ? "unidade" : "unidades"}</option>
+                          ))}
+                        </select>
                       </div>
                     </div>
                   )}
@@ -729,6 +830,12 @@ export default function App() {
                         addToCart(product, { color: selectedTopRedeColor, size: selectedTopRedeSize });
                       } else if (product.id === 4) {
                         addToCart(product, { color: selectedTopTransversalColor, size: selectedTopTransversalSize });
+                      } else if (product.id === 6) {
+                        addToCart(product, { color: selectedTopBrasilColor, size: selectedTopBrasilSize });
+                      } else if (product.id === 8) {
+                        addToCart(product, { color: selectedTopFranjaColor, size: selectedTopFranjaSize });
+                      } else if (product.id === 7) {
+                        addToCart(product, { color: selectedHeadpiecePrimaryColor }, selectedHeadpieceQuantity);
                       } else if (product.id === 2 || product.id === 5) {
                         addToCart(product, { 
                           type: selectedPortaCoposType, 
@@ -743,16 +850,19 @@ export default function App() {
                       (product.id === 1 && (!selectedTopColor || !selectedTopSize)) ||
                       (product.id === 3 && (!selectedTopRedeColor || !selectedTopRedeSize)) ||
                       (product.id === 4 && (!selectedTopTransversalColor || !selectedTopTransversalSize)) ||
+                      (product.id === 6 && (!selectedTopBrasilColor || !selectedTopBrasilSize)) ||
+                      (product.id === 8 && (!selectedTopFranjaColor || !selectedTopFranjaSize)) ||
+                      (product.id === 7 && (!selectedHeadpiecePrimaryColor || selectedHeadpieceQuantity === 0)) ||
                       ((product.id === 2 || product.id === 5) && (selectedPortaCoposQuantity === 0 || !selectedPortaCoposPrimaryColor))
                     }
                     className={`w-full py-3 rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg ${
-                      ((product.id === 1 && (!selectedTopColor || !selectedTopSize)) || (product.id === 3 && (!selectedTopRedeColor || !selectedTopRedeSize)) || (product.id === 4 && (!selectedTopTransversalColor || !selectedTopTransversalSize)) || ((product.id === 2 || product.id === 5) && (selectedPortaCoposQuantity === 0 || !selectedPortaCoposPrimaryColor)))
+                      ((product.id === 1 && (!selectedTopColor || !selectedTopSize)) || (product.id === 3 && (!selectedTopRedeColor || !selectedTopRedeSize)) || (product.id === 4 && (!selectedTopTransversalColor || !selectedTopTransversalSize)) || (product.id === 6 && (!selectedTopBrasilColor || !selectedTopBrasilSize)) || (product.id === 8 && (!selectedTopFranjaColor || !selectedTopFranjaSize)) || (product.id === 7 && (!selectedHeadpiecePrimaryColor || selectedHeadpieceQuantity === 0)) || ((product.id === 2 || product.id === 5) && (selectedPortaCoposQuantity === 0 || !selectedPortaCoposPrimaryColor)))
                         ? "bg-text-mocha/10 text-text-mocha/40 cursor-not-allowed shadow-none"
                         : "bg-accent-rose text-white hover:bg-accent-rose/90 shadow-accent-rose/20"
                     }`}
                   >
                     <ShoppingBag className="w-4 h-4" />
-                    {((product.id === 1 && (!selectedTopColor || !selectedTopSize)) || (product.id === 3 && (!selectedTopRedeColor || !selectedTopRedeSize)) || (product.id === 4 && (!selectedTopTransversalColor || !selectedTopTransversalSize)) || ((product.id === 2 || product.id === 5) && (selectedPortaCoposQuantity === 0 || !selectedPortaCoposPrimaryColor)))
+                    {((product.id === 1 && (!selectedTopColor || !selectedTopSize)) || (product.id === 3 && (!selectedTopRedeColor || !selectedTopRedeSize)) || (product.id === 4 && (!selectedTopTransversalColor || !selectedTopTransversalSize)) || (product.id === 6 && (!selectedTopBrasilColor || !selectedTopBrasilSize)) || (product.id === 8 && (!selectedTopFranjaColor || !selectedTopFranjaSize)) || (product.id === 7 && (!selectedHeadpiecePrimaryColor || selectedHeadpieceQuantity === 0)) || ((product.id === 2 || product.id === 5) && (selectedPortaCoposQuantity === 0 || !selectedPortaCoposPrimaryColor)))
                       ? "Selecione as opções"
                       : "Adicionar ao Carrinho"}
                   </button>
